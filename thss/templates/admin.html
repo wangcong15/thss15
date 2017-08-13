@@ -1,0 +1,14 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>THSS15</title>
+	</head>
+	<body>
+		<div>Hello {{ user_name }}</div>
+		<button id="logout">Logout</button>
+		<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+		<script src="{% static "js/jquery.cookie.js" %}"></script>
+		<script src="{% static "js/superadmin.js" %}"></script>
+	</body>
+</html>

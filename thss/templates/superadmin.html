@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>THSS15</title>
+		<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+		<link rel="stylesheet" href="{% static "css/common.css" %}">
+		<link rel="stylesheet" href="{% static "css/bootstrap-responsive.css" %}">
+		<link rel="shortcut icon" href="{% static "images/monkey64.ico" %}"/>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="/index/">THSS15</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class="active"><a href="">Overview</a></li>
+							<li><a href="/pi/">Personal Information</a></li>
+							<li><a href="/um/">User Management</a></li>
+						</ul>
+						<ul class="navbar-text pull-right nav">
+							<li><a href="">Hello {{ user_name }}</a></li>
+							<li><a id="logout" class="navbar-link"><button>Logout</button></a></li>     
+			            </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="hero-unit">
+				<h2>You can manage the whole system</h2>
+				<p>Now you can <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add Score Records</button></p>
+			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">
+								Add score records
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>Please paste the score here:</p>
+							<textarea id="scores"></textarea>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close
+								</button>
+								<button id="save_score" type="button" class="btn btn-primary">
+									Save
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<footer>
+				<p>&copy; Cong Wang 2016</p>
+			</footer>
+		</div>
+		<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+		<script src="{% static "js/jquery.cookie.js" %}"></script>
+		<script src="{% static "js/superadmin.js" %}"></script>
+		<script src="{% static "js/bootstrap.min.js" %}"></script>
+		<script src="{% static "js/common.js" %}"></script>
+	</body>
+</html>

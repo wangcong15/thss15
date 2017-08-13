@@ -1,0 +1,118 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>THSS15</title>
+		<link href="http://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="{% static "css/common.css" %}">
+		<link rel="stylesheet" href="{% static "css/bootstrap-responsive.css" %}">
+		<link rel="shortcut icon" href="{% static "images/monkey64.ico" %}"/>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="brand" href="/index/">THSS15</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class="active"><a href="">Personal Information</a></li>
+							<li><a href="/sr/">Scores and Rank</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="hero-unit">
+				<h2>You can update the information.</h2>
+				<p>Also you can <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Change Your Password</button> or <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" id="update_info">Update the Information</button> or <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal3" id="update_info">FeedBack</button></p>
+			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">
+								Change the password
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>New Password: <input id="new_pass"></input></p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close
+								</button>
+								<button id="save_pass" type="button" class="btn btn-primary">
+									Save
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">
+								Edit Profile
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>Telep: <input id="tel"></input></p>
+							<p>Email: <input id="email"></input></p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close
+								</button>
+								<button id="update_profile" type="button" class="btn btn-primary">
+									Update
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">
+								FeedBack
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>Your Suggestions: <input id="new_feedback"></input></p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close
+								</button>
+								<button id="send_fb" type="button" class="btn btn-primary">
+									Send
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<footer>
+				<p>&copy; Cong Wang 2016</p>
+			</footer>
+		</div>
+		<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="http://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    	<script src="http://cdn.bootcss.com/holder/2.0/holder.min.js"></script>
+		<script src="{% static "js/jquery.cookie.js" %}"></script>
+		<script src="{% static "js/ordinaryuser.js" %}"></script>
+		<script src="{% static "js/common.js" %}"></script>
+	</body>
+</html>

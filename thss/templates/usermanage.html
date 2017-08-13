@@ -1,0 +1,134 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>THSS15</title>
+		<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+		<link rel="stylesheet" href="{% static "css/common.css" %}">
+		<link rel="stylesheet" href="{% static "css/bootstrap-responsive.css" %}">
+		<link rel="shortcut icon" href="{% static "images/monkey64.ico" %}"/>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="/index/">THSS15</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="/index/">Overview</a></li>
+							<li><a href="/pi/">Personal Information</a></li>
+							<li class="active"><a href="/um/">User Management</a></li>
+						</ul>
+						<ul class="navbar-text pull-right nav">
+							<li><a href="">Hello {{ user_name }}</a></li>
+							<li><a id="logout" class="navbar-link"><button>Logout</button></a></li>     
+			            </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="hero-unit">
+				<h2>You can manage the user system</h2>
+				<p>The SysName indicates the username in the system. The Rank indicates the rank of the user(Super Administrator, Administrator or Ordinary User). Now you can <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add New Users</button></p>
+			</div>
+			<table class="table">
+			    <thead>
+			        <tr>
+			         	<th>SysName</th>
+			         	<th>Rank</th>
+			         	<th>Edit</th>
+			      	</tr>
+			    </thead>
+			    <tbody>
+			    	{% for user in userlist %}
+			    		<tr>
+							<td><a class="edit_profile" data-toggle="modal" data-target="#myModal2">{{user.username}}</a></td>
+							{% if user.rank == 0 %}
+								<td style="color:red">Super Administrator</td>
+							{% else %}
+								{% if user.rank == 1 %}
+									<td style="color:blue">Administrator</td>
+								{% else %}
+									<td>Ordinary User</td>
+								{% endif%}		
+							{% endif%}
+							{% if user.rank > 0 %}
+								<td><a class="delete_user" data="{{user.username}}">Delete</a>/<a class="reset_pass" data="{{user.username}}">Reset</a></td>
+							{% else %}
+								<td>--------</td>
+							{% endif%}
+						</tr>
+			    	{% endfor %}
+			   	</tbody>
+			</table>
+			<p>total:{{ total }} (Super Administrator:{{ countdic.0 }}; Administrator:{{ countdic.1 }}; Ordinary User:{{ countdic.2 }})</p>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">
+								Add a new user
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>Name: <input id="new_username"></input></p>
+							<p>Rank:
+								<select id="new_rank" class="form-control">
+									<option>Super Administrator</option>
+									<option>Administrator</option>
+									<option>Ordinary User</option>
+								</select>
+							</p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close
+								</button>
+								<button id="create_new" type="button" class="btn btn-primary">
+									Create
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">
+								Edit Profile
+							</h4>
+						</div>
+						<div class="modal-body">
+							<p>StuID: <input id="stuid"></input></p>
+							<p>Class: <input id="class"></input></p>
+							<p>Telep: <input id="tel"></input></p>
+							<p>Email: <input id="email"></input></p>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close
+								</button>
+								<button id="update_profile" type="button" class="btn btn-primary">
+									Update
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer>
+			<p>&copy; Cong Wang 2016</p>
+			</footer>
+			</div>
+		<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+		<script src="{% static "js/jquery.cookie.js" %}"></script>
+		<script src="{% static "js/usermanage.js" %}"></script>
+		<script src="{% static "js/bootstrap.min.js" %}"></script>
+		<script src="{% static "js/common.js" %}"></script>
+	</body>
+</html>

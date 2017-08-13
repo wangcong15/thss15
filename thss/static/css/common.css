@@ -1,0 +1,25 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.delete_user {
+	cursor: pointer;
+}
+
+.reset_pass {
+	cursor: pointer;
+}
+
+.edit_profile {
+	cursor: pointer;
+	color: green;
+}
+
+#scores {
+	width: 97%;
+}
+
+#search_table{
+	display: none;
+}

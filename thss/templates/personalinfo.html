@@ -1,0 +1,101 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>THSS15</title>
+		<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+		<link rel="stylesheet" href="{% static "css/common.css" %}">
+		<link rel="stylesheet" href="{% static "css/bootstrap-responsive.css" %}">
+		<link rel="shortcut icon" href="{% static "images/monkey64.ico" %}"/>
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="/index/">THSS15</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="/index/">Overview</a></li>
+							<li class="active"><a href="/pi/">Personal Information</a></li>
+							<li><a href="/um/">User Management</a></li>
+						</ul>
+						<ul class="navbar-text pull-right nav">
+							<li><a href="">Hello {{ user_name }}</a></li>
+							<li><a id="logout" class="navbar-link"><button>Logout</button></a></li>     
+			            </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="hero-unit">
+				<h2>You can check the personal information</h2>
+				<p>Now you can check the scores, rank and progress of a person!</p>
+			</div>
+			<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a href="#all_score" data-toggle="tab">All Scores</a></li>
+				<li><a href="#rank" data-toggle="tab" id="show_rank">Rank</a></li>
+				<li><a href="#progress" tabindex="-1" data-toggle="tab">Progress</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="all_score">
+					<p>You can check all scores of a person.</p>
+					Username: <input id="user_name"></input>
+					<button class="btn btn-primary" id="search_score">Search</button>
+					<table class="table" id="search_table">
+					    <thead>
+					        <tr>
+					         	<th>Student Id</th>
+					         	<th>Student Name</th>
+					         	<th>Course Name</th>
+					         	<th>Score</th>
+					         	<th>Weigh</th>
+					         	<th>Style</th>
+					      	</tr>
+					    </thead>
+					    <tbody id="score_container">
+					    	
+					   	</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="rank">
+					<p>You can check the rank of a person.</p>
+					<select id="date_period" class="form-control">
+						<option>All The Time</option>
+						<option>Last Term</option>
+					</select>
+					<table class="table" id="rank_table">
+					    <thead>
+					        <tr>
+					         	<th>Student Name</th>
+					         	<th>Average Score</th>
+					         	<th>Rank</th>
+					         	<th>Fail Number</th>
+					         	<th>Total Weigh</th>
+					      	</tr>
+					    </thead>
+					    <tbody id="rank_container">
+					    	
+					   	</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="progress">
+					<p>You can check the progress of a person.</p>
+				</div>
+			</div>
+			<hr>
+			<footer>
+				<p>&copy; Cong Wang 2016</p>
+			</footer>
+		</div>
+		<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+		<script src="{% static "js/jquery.cookie.js" %}"></script>
+		<script src="{% static "js/personalinfo.js" %}"></script>
+		<script src="{% static "js/bootstrap.min.js" %}"></script>
+		<script src="{% static "js/common.js" %}"></script>
+	</body>
+</html>
